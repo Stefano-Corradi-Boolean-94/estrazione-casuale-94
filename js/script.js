@@ -1,3 +1,17 @@
+/*
+Ho una lista di studenti e una lista di studenti estratti
+
+SE la lista degli studenti estratti è più cordta dei quella di tutti gli studenti
+  
+  Estraggo uno studente
+  SE lo studente non è presente nella lista lo inseirsco
+  ATRIMENTI ne estraggo un altro
+
+ALTRIMENTI do la possibilità di ricominciare
+
+*/
+
+
 const classe94 = [
   'Giacomo	Arena',
   'Nicola	Bazzocchi',
@@ -38,15 +52,47 @@ const classe94 = [
 ];
 
 const bottone = document.getElementById('estrai');
+const output = document.getElementById('nome-estratto');
+
+// di default l'elenco dei nomi estratti è vuoto ed è una variabile globale
+const nomiEstratti = []
 
 bottone.addEventListener('click', function(){
+  bottone.innerHTML = 'Estrai';
+  let outputString = '';
 
-  // estraggo un numero random da 0 alla lunghezza dell'array arrotondato per difetto
-  const indiceRandom = Math.floor(Math.random() * classe94.length );
+  // controllo che l'elenco degli estratti sia inferione a quello totale
+  // se si ne estraggo uno
+  if(nomiEstratti.length < classe94.length){
+    let nomeValido = false;
+    do{
+      // estraggo un numero random da 0 alla lunghezza dell'array arrotondato per difetto
+      const indiceRandom = Math.floor(Math.random() * classe94.length );
+      const nomeEstratto = classe94[indiceRandom];
+      console.log(nomeEstratto);
+      
+      // pushare il nome nell'elenco estratti e vare diventare true il nomeValido lo faccio solo se il nome non è mai stato estratto
+      if(!nomiEstratti.includes(nomeEstratto)){
+        nomiEstratti.push(nomeEstratto);
+        // stampo l'elemento dell'array a indice = indice estratto
+        outputString = classe94[indiceRandom];
+        // una volta inserito il nome il flag diventa true e blocca il ciclo
+        nomeValido = true;
+      }
 
-  const output = document.getElementById('nome-estratto');
+      // il ciclo continua fino a quando il flag realivo al nome estratto non sia false
+    }while(!nomeValido)
+    
+  }else{
+    // se le'elenco degli estratti è pieno è pieno
+    // resetto l'eleco estartti
+    nomiEstratti.splice(0);
+    outputString = 'Estrazione finita';
+    bottone.innerHTML = 'Ricomincia';
+  }
 
-  // stampo l'elemento dell'array a indice = indice estratto
-  output.innerHTML = classe94[indiceRandom];
+
+
+  output.innerHTML = outputString;
 
 })
