@@ -58,7 +58,9 @@ const output = document.getElementById('nome-estratto');
 const nomiEstratti = []
 
 bottone.addEventListener('click', function(){
-  bottone.innerHTML = 'Estrai';
+  
+  bottone.innerHTML = (nomiEstratti.length < classe94.length) ? 'Estrai' : 'Ricomincia';
+  
   let outputString = '';
 
   // controllo che l'elenco degli estratti sia inferione a quello totale
@@ -67,7 +69,7 @@ bottone.addEventListener('click', function(){
     let nomeValido = false;
     do{
       // estraggo un numero random da 0 alla lunghezza dell'array arrotondato per difetto
-      const indiceRandom = Math.floor(Math.random() * classe94.length );
+      const indiceRandom = getRandomNumber(0, classe94.length - 1)
       const nomeEstratto = classe94[indiceRandom];
       console.log(nomeEstratto);
       
@@ -88,11 +90,15 @@ bottone.addEventListener('click', function(){
     // resetto l'eleco estartti
     nomiEstratti.splice(0);
     outputString = 'Estrazione finita';
-    bottone.innerHTML = 'Ricomincia';
   }
-
-
 
   output.innerHTML = outputString;
 
 })
+
+
+function getRandomNumber(min, max){
+  const randomNumber = Math.floor(Math.random() * (max - min + 1 ) + min);
+
+  return randomNumber;
+}
