@@ -14,7 +14,6 @@ ALTRIMENTI do la possibilità di ricominciare
 
 const classe94 = [
   'Giacomo	Arena',
-  'Nicola	Bazzocchi',
   'Michele	Bertoia',
   'Samuele	Bumbello',
   'Simona	Buscicchio',
@@ -24,7 +23,6 @@ const classe94 = [
   'Raffaele	Catalano',
   'Federico	Cattani',
   'Edwin Andres	Cayambe PIlicita',
-  'Lapo	Ceracchini',
   'Leonardo	Chen',
   'Andrea	Convertini',
   'Marco	De Marie',
